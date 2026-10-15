@@ -1,0 +1,25 @@
+# NOTICE
+
+physics-canvas-video (物理与数学 Canvas 2D 教学动画通用 Agent Skill)
+Copyright (c) 2026 physics-canvas-video contributors
+
+本项目包含并衍生自以下开源项目与第三方资源：
+
+## 1. 上游引擎与动效组件 (Upstream Framework)
+- 项目名称: huashu-art-motion
+- 许可协议: MIT License
+- 原作者: alchaincyf (花叔 · 花生)
+- 仓库说明: 提供了 Canvas 2D 逐帧无头渲染、字体预热、动效语法库与基础架构支持。
+
+## 2. 离线字体文件许可 (Fonts Licenses)
+本项目包含于 `scripts/engine/lib/fonts/` 中的所有字体文件均采用各自原作者的开源许可协议分发，绝大多数采用 SIL Open Font License 1.1 (OFL-1.1)。
+- 字体许可清单全文与对应关系见: `scripts/engine/lib/fonts/LICENSES.md`
+- OFL 1.1 标准协议文本见: `scripts/engine/lib/fonts/OFL.txt`
+- 包含字体涵盖: Noto Sans SC, Noto Serif SC, CMU Serif (Computer Modern Unicode), 霞鹜文楷 (LXGW WenKai) 等。
+- 依据 OFL 许可规定，上述字体文件均可随软件分发与商业使用，禁止单独售卖字体文件本身。
+
+## 3. 本项目原创工程扩展 (Physics Engine & QA Gates)
+- 物理与数学参数单一真实来源 (SSOT) 规范
+- 10 大维度综合自动化质量门禁 (qa_gate.py Suites A ~ J)
+- Canvas 运行时物理遥测 (Telemetry) 与动态运动连续性追踪
+- 3 轮定向修复闭环控制器 (auto_fix.py)

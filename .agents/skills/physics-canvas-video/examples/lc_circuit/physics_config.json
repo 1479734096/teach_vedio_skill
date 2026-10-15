@@ -1,0 +1,122 @@
+{
+  "system": "lc_oscillation_circuit",
+  "topic": "lc_circuit",
+  "domain_note": "LC 振荡电路中的电磁能量无损互换：电容器电场储能 Ee 与电感线圈磁场储能 Em 周期性交替转化，总电磁能量严格守恒。电流参考方向定义为由电容上极板流出经电感流回下极板（顺时针），满足 dq/dt = -i(t)。",
+  "parameters": {
+    "inductance_L_h": 1.0,
+    "capacitance_C_f": 1.0,
+    "initial_charge_Q0_c": 1.0,
+    "charge_amplitude_px": 120,
+    "current_amplitude_px": 120,
+    "period_T_s": 6.283185307179586,
+    "omega_rad_s": 1.0,
+    "total_energy_E0_j": 0.5
+  },
+  "coordinates": {
+    "screen_origin_X0": 960,
+    "screen_baseline_Y0": 550,
+    "x_min_px": -750,
+    "x_max_px": 750
+  },
+  "equations": {
+    "reference_convention": "电流参考方向为顺时针（由上极板经电感流回下极板），满足 dq/dt = -i(t)",
+    "angular_frequency": "omega0 = 1 / sqrt(L * C) = 1.0 rad/s",
+    "period": "T = 2 * pi * sqrt(L * C) = 2 * pi s (~6.2832 s)",
+    "charge_evolution": "q(t) = Q0 * cos(omega0 * t)",
+    "current_evolution": "i(t) = -dq/dt = Q0 * omega0 * sin(omega0 * t)",
+    "electric_energy": "Ee(t) = (1/2) * (q^2 / C) = E0 * cos^2(omega0 * t)",
+    "magnetic_energy": "Em(t) = (1/2) * L * (i^2) = E0 * sin^2(omega0 * t)",
+    "total_energy_conservation": "E_total = Ee(t) + Em(t) == E0 = 0.5 J (恒定守恒)",
+    "loop_kvl": "u_C - u_L = q/C - L*di/dt = 0；u_L 按电流方向采用被动约定"
+  },
+  "checkpoints": [
+    {
+      "time_ratio": 0.0,
+      "time_s": 0.0,
+      "state": "电容充饱",
+      "q_ratio": 1.0,
+      "i_ratio": 0.0,
+      "Ee_percent": 100,
+      "Em_percent": 0
+    },
+    {
+      "time_ratio": 0.25,
+      "time_s": 1.570796,
+      "state": "电感正向峰值",
+      "q_ratio": 0.0,
+      "i_ratio": 1.0,
+      "Ee_percent": 0,
+      "Em_percent": 100
+    },
+    {
+      "time_ratio": 0.5,
+      "time_s": 3.141593,
+      "state": "反向充饱",
+      "q_ratio": -1.0,
+      "i_ratio": 0.0,
+      "Ee_percent": 100,
+      "Em_percent": 0
+    },
+    {
+      "time_ratio": 0.75,
+      "time_s": 4.712389,
+      "state": "电感反向峰值",
+      "q_ratio": 0.0,
+      "i_ratio": -1.0,
+      "Ee_percent": 0,
+      "Em_percent": 100
+    },
+    {
+      "time_ratio": 1.0,
+      "time_s": 6.283185,
+      "state": "完整周期回到初始态",
+      "q_ratio": 1.0,
+      "i_ratio": 0.0,
+      "Ee_percent": 100,
+      "Em_percent": 0
+    }
+  ],
+  "drawing_bindings": {
+    "lc.q_curve": true,
+    "lc.i_curve": true,
+    "lc.q_dot": true,
+    "lc.i_dot": true,
+    "lc.energy.e": true,
+    "lc.energy.m": true
+  },
+  "continuity_rules": [
+    {
+      "source": "shot1",
+      "target": "shot2",
+      "role": "lc.energy.e",
+      "world_origin_delta": [
+        0,
+        0
+      ]
+    },
+    {
+      "source": "shot2",
+      "target": "shot3",
+      "role": "lc.energy.e",
+      "world_origin_delta": [
+        0,
+        0
+      ]
+    },
+    {
+      "source": "shot3",
+      "target": "shot4",
+      "role": "lc.energy.e",
+      "world_origin_delta": [
+        0,
+        -5
+      ]
+    }
+  ],
+  "units": {
+    "video_time": "s",
+    "simulation_time": "s",
+    "plot_scale": "见 drawing_bindings 独立单位换算",
+    "model_parameters": "参数名所列 SI 单位，或原示例明确采用的模型/绘图单位"
+  }
+}

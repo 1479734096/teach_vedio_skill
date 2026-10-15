@@ -1,0 +1,44 @@
+{
+  "title": "傅里叶级数：旋转向量如何合成方波？",
+  "parameters": {
+    "period": 6.283185307179586,
+    "amplitude": 1.0,
+    "n_harmonics": 3,
+    "fundamental_freq": 0.15915494309189535
+  },
+  "derived": {
+    "omega_0": "2 * pi / period"
+  },
+  "project_name": "manim_test2_fourier_series",
+  "topic": "fourier_series",
+  "drawing_bindings": {
+    "Scene2_Epicycles": {
+      "epicycles": {
+        "model": "epicycles",
+        "center": [
+          -4,
+          0
+        ]
+      },
+      "fourier": {
+        "model": "fourier",
+        "x_start": -1.2,
+        "time_per_x": 1.5
+      }
+    },
+    "Scene3_Summary": {
+      "background": {
+        "model": "fourier",
+        "x_start": 0,
+        "time_per_x": -1,
+        "y_scale": 0.45
+      }
+    }
+  },
+  "units": {
+    "video_time": "s",
+    "simulation_time": "s",
+    "plot_scale": "见 drawing_bindings 独立单位换算",
+    "model_parameters": "参数名所列 SI 单位，或原示例明确采用的模型/绘图单位"
+  }
+}

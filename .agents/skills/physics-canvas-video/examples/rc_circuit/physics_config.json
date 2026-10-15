@@ -1,0 +1,128 @@
+{
+  "system": "first_order_rc_circuit",
+  "topic": "rc_circuit",
+  "title": "RC 电路充放电过程",
+  "domain_note": "一阶 RC 线性动态电路的零状态响应 (充电) 与零输入响应 (放电)：基于基尔霍夫电压定律 (KVL) 与电容器伏安特性 i = C(dv/dt)，时间常数 tau = R * C 决定动态过渡速率，全充过程中电源输出能量恒有恰好 50% 转化为电场储能，另 50% 耗散为焦耳热。",
+  "parameters": {
+    "resistance_R_ohm": 1000.0,
+    "capacitance_C_f": 0.001,
+    "voltage_V0_v": 10.0,
+    "initial_current_I0_a": 0.01,
+    "time_constant_tau_s": 1.0,
+    "total_source_energy_j": 0.1,
+    "capacitor_energy_j": 0.05,
+    "resistor_heat_energy_j": 0.05,
+    "voltage_amplitude_px": 140,
+    "current_amplitude_px": 120
+  },
+  "coordinates": {
+    "screen_origin_X0": 960,
+    "screen_baseline_Y0": 550,
+    "x_min_px": -750,
+    "x_max_px": 750
+  },
+  "equations": {
+    "kvl_loop": "V0 = v_R(t) + v_C(t) = R * i(t) + v_C(t)",
+    "differential_equation": "R * C * (dv_C/dt) + v_C(t) = V0  ==>  tau * (dv_C/dt) + v_C = V0",
+    "charging_voltage": "v_C(t) = V0 * (1 - exp(-t / tau))",
+    "charging_current": "i(t) = (V0 / R) * exp(-t / tau) = I0 * exp(-t / tau)",
+    "discharging_voltage": "v_C(t) = V0 * exp(-t / tau)",
+    "discharging_current": "i(t) = -(V0 / R) * exp(-t / tau) = -I0 * exp(-t / tau)",
+    "characteristic_tau_point": "t = tau 时, v_C(tau) = V0 * (1 - 1/e) ≈ 63.21% V0 = 6.321 V, i(tau) = 36.79% I0",
+    "steady_state_point": "t = 4 * tau 时, v_C(4*tau) = V0 * (1 - exp(-4)) ≈ 98.17% V0",
+    "energy_theorem": "E_source = C * V0^2 = 0.10 J; E_C = 0.5 * C * V0^2 = 0.05 J (50%); E_R = 0.05 J (50%)"
+  },
+  "checkpoints": [
+    {
+      "time_ratio": 0.0,
+      "time_s": 0.0,
+      "state": "初始合闸",
+      "v_C": 0.0,
+      "i": 0.01,
+      "vc_pct": 0.0,
+      "i_pct": 100.0
+    },
+    {
+      "time_ratio": 1.0,
+      "time_s": 1.0,
+      "state": "1倍时间常数tau",
+      "v_C": 6.321,
+      "i": 0.00368,
+      "vc_pct": 63.2,
+      "i_pct": 36.8
+    },
+    {
+      "time_ratio": 2.0,
+      "time_s": 2.0,
+      "state": "2倍时间常数tau",
+      "v_C": 8.647,
+      "i": 0.00135,
+      "vc_pct": 86.5,
+      "i_pct": 13.5
+    },
+    {
+      "time_ratio": 3.0,
+      "time_s": 3.0,
+      "state": "3倍时间常数tau",
+      "v_C": 9.502,
+      "i": 0.0005,
+      "vc_pct": 95.0,
+      "i_pct": 5.0
+    },
+    {
+      "time_ratio": 4.0,
+      "time_s": 4.0,
+      "state": "准稳态",
+      "v_C": 9.817,
+      "i": 0.00018,
+      "vc_pct": 98.2,
+      "i_pct": 1.8
+    }
+  ],
+  "drawing_bindings": {
+    "rc.wire": true,
+    "rc.v": true,
+    "rc.i": true,
+    "rc.dot": true
+  },
+  "continuity_rules": [
+    {
+      "source": "shot1",
+      "target": "shot2",
+      "role": "rc.wire",
+      "world_origin_delta": [
+        0,
+        0
+      ],
+      "instance_index": 0
+    },
+    {
+      "source": "shot2",
+      "target": "shot3",
+      "role": "rc.wire",
+      "world_origin_delta": [
+        0,
+        0
+      ],
+      "instance_index": 0
+    }
+  ],
+  "text_containers": [
+    {
+      "scene": "shot5",
+      "pattern": "^(V₀=|RC|vC\\(t\\)|令时间常数)",
+      "bbox": [
+        140,
+        135,
+        880,
+        650
+      ]
+    }
+  ],
+  "units": {
+    "video_time": "s",
+    "simulation_time": "s",
+    "plot_scale": "见 drawing_bindings 独立单位换算",
+    "model_parameters": "参数名所列 SI 单位，或原示例明确采用的模型/绘图单位"
+  }
+}

@@ -1,0 +1,1 @@
+SCENES['shot1']={draw(c,lt,gt){AM.draw(c,lt,gt,'shot1',0);}};

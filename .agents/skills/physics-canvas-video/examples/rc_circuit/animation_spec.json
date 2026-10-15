@@ -1,0 +1,78 @@
+{
+  "title": "RC 电路充放电过程与时间常数物理机制",
+  "project": "physics-canvas-video",
+  "resolution": { "width": 1920, "height": 1080 },
+  "fps": 30,
+  "duration": 30.0,
+  "theme": "dark_board",
+  "physics": {
+    "system": "first_order_rc_circuit",
+    "topic": "rc_circuit",
+    "title": "RC 电路充放电过程",
+    "parameters": {
+      "resistance_R_ohm": 1000.0,
+      "capacitance_C_f": 0.001,
+      "voltage_V0_v": 10.0,
+      "initial_current_I0_a": 0.01,
+      "time_constant_tau_s": 1.0,
+      "total_source_energy_j": 0.1,
+      "capacitor_energy_j": 0.05,
+      "resistor_heat_energy_j": 0.05,
+      "voltage_amplitude_px": 140,
+      "current_amplitude_px": 120
+    },
+    "coordinates": {
+      "screen_origin_X0": 960,
+      "screen_baseline_Y0": 550,
+      "x_min_px": -750,
+      "x_max_px": 750
+    }
+  },
+  "shots": [
+    {
+      "id": "shot1",
+      "time_range": [0.0, 6.0],
+      "grammar": "t1_3b1b",
+      "camera": "still",
+      "content": "呈现一阶 RC 串联回路与双掷开关初始开路态，合闸接通电源 V0，电容电压为 0，回路涌现最大初始电流 I0=V0/R",
+      "badge": "初始零状态与合闸涌流",
+      "color": "#58C4DD"
+    },
+    {
+      "id": "shot2",
+      "time_range": [6.0, 12.0],
+      "grammar": "t1_3b1b",
+      "camera": "push",
+      "content": "电容器极板电荷积累，电压按指数曲线上升，电流按指数衰减，在 t=tau 时刻电压达到 63.2%，满足动态 KVL 守恒",
+      "badge": "充电过程与时间常数 τ",
+      "color": "#2ED573"
+    },
+    {
+      "id": "shot3",
+      "time_range": [12.0, 18.0],
+      "grammar": "t1_3b1b",
+      "camera": "glide",
+      "content": "电容充饱至准稳态后，双掷开关切换至触点 2 旁路电源，电容器作为电源向电阻反向放电，电压与电流平滑衰减至零",
+      "badge": "开关切换与零输入放电",
+      "color": "#FF9F43"
+    },
+    {
+      "id": "shot4",
+      "time_range": [18.0, 24.0],
+      "grammar": "t1_3b1b",
+      "camera": "pull",
+      "content": "双轴时域波形对比：电压上升与衰减曲线、切线交点几何意义（初始切线与渐近线交于 t=tau 处）",
+      "badge": "响应曲线几何本质",
+      "color": "#FFFF00"
+    },
+    {
+      "id": "shot5",
+      "time_range": [24.0, 30.0],
+      "grammar": "t1_3b1b",
+      "camera": "still",
+      "content": "总结板书：一阶常微分方程通用解、时间常数物理本质、充电 50% 能量耗散悖论与马克笔重点批注",
+      "badge": "微分方程与能量定理",
+      "color": "#FC6255"
+    }
+  ]
+}

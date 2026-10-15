@@ -1,0 +1,32 @@
+{
+  "project_name": "physics_explainer",
+  "topic": "standing_wave",
+  "version": "1.0.0",
+  "parameters": {
+    "wavelength": 6.0,
+    "period": 2.0,
+    "amplitude": 1.0,
+    "reflection_coeff": 1.0,
+    "x_term": 4.2,
+    "x_source": -5.8
+  },
+  "derived": {
+    "beta": "2 * pi / wavelength",
+    "omega": "2 * pi / period",
+    "phase_velocity": "omega / beta"
+  },
+  "checkpoints": [
+    {
+      "name": "open_terminal_voltage",
+      "x": 4.2,
+      "t": 0.0,
+      "expected_value": 2.0
+    },
+    {
+      "name": "quarter_wave_node",
+      "x": 2.7,
+      "t": 0.5,
+      "expected_value": 0.0
+    }
+  ]
+}

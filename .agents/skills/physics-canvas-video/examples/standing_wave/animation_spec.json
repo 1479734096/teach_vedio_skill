@@ -1,0 +1,97 @@
+{
+  "title": "两列相反方向的波如何产生驻波？——传输线电压驻波机制",
+  "project": "huashu-art-motion",
+  "resolution": {
+    "width": 1920,
+    "height": 1080
+  },
+  "fps": 30,
+  "duration": 30.0,
+  "theme": "ink_and_chalk",
+  "physics": {
+    "system": "transmission_line_voltage_standing_wave",
+    "domain_note": "纵向波形为无耗传输线电压 u(x,t) 随空间分布图示，非材料机械横向振动；沿线点为空间电位采样点。",
+    "incident_wave": "u_i = A * cos(omega * t - beta * x)",
+    "reflected_wave": "u_r = A * cos(omega * t + beta * x)",
+    "standing_wave": "u = 2 * A * cos(beta * x) * cos(omega * t)",
+    "boundary": "x = 0 (开路终端, 电压全反射系数 Gamma = +1)",
+    "parameters": {
+      "amplitude_A_px": 75,
+      "standing_amplitude_2A_px": 150,
+      "wavelength_lambda_px": 500,
+      "frequency_f_hz": 0.5,
+      "period_T_s": 2.0,
+      "omega_rad_s": 3.141592653589793,
+      "beta_rad_px": 0.012566370614359173,
+      "phase_velocity_px_s": 250,
+      "reflection_coefficient_gamma": 1.0,
+      "terminal_type": "open_circuit_terminal (开路终端)"
+    },
+    "coordinates": {
+      "screen_origin_X0": 1500,
+      "screen_baseline_Y0": 550,
+      "x_min_px": -1050,
+      "x_max_px": 40
+    },
+    "nodes": [
+      { "name": "N1", "x_ratio": -0.25, "x_px": -125, "x_screen": 1375, "nature": "电压波节: 电压恒为0 (完全相消, 对应电流波腹/磁场储能峰值点)" },
+      { "name": "N2", "x_ratio": -0.75, "x_px": -375, "x_screen": 1125, "nature": "电压波节: 电压恒为0 (完全相消, 对应电流波腹/磁场储能峰值点)" },
+      { "name": "N3", "x_ratio": -1.25, "x_px": -625, "x_screen": 875, "nature": "电压波节: 电压恒为0 (完全相消, 对应电流波腹/磁场储能峰值点)" },
+      { "name": "N4", "x_ratio": -1.75, "x_px": -875, "x_screen": 625, "nature": "电压波节: 电压恒为0 (完全相消, 对应电流波腹/磁场储能峰值点)" }
+    ],
+    "antinodes": [
+      { "name": "A0", "x_ratio": 0.0, "x_px": 0, "x_screen": 1500, "nature": "开路终端波腹: 终端电压振幅加倍达 2A, 电流恒为0" },
+      { "name": "A1", "x_ratio": -0.5, "x_px": -250, "x_screen": 1250, "nature": "电压波腹: 周期振荡振幅 2A, 电流恒为0" },
+      { "name": "A2", "x_ratio": -1.0, "x_px": -500, "x_screen": 1000, "nature": "电压波腹: 周期振荡振幅 2A, 电流恒为0" },
+      { "name": "A3", "x_ratio": -1.5, "x_px": -750, "x_screen": 750, "nature": "电压波腹: 周期振荡振幅 2A, 电流恒为0" },
+      { "name": "A4", "x_ratio": -2.0, "x_px": -1000, "x_screen": 500, "nature": "电压波腹: 周期振荡振幅 2A, 电流恒为0" }
+    ]
+  },
+  "shots": [
+    {
+      "id": "shot1",
+      "time_range": [0.0, 6.0],
+      "grammar": "t1_3b1b",
+      "camera": "still",
+      "content": "显示一列沿传输线向右传播的正向行波电压 u_i = A cos(omega*t - beta*x)",
+      "badge": "正向行波传播",
+      "color": "#58C4DD"
+    },
+    {
+      "id": "shot2",
+      "time_range": [6.0, 12.0],
+      "grammar": "t1_3b1b",
+      "camera": "push",
+      "content": "加入向左传播的反向反射电压波 u_r = A cos(omega*t + beta*x)，建立 x=0 开路终端同相反射约定 (Gamma=+1)",
+      "badge": "反向波与相位",
+      "color": "#FC6255"
+    },
+    {
+      "id": "shot3",
+      "time_range": [12.0, 18.0],
+      "grammar": "t1_3b1b",
+      "camera": "glide",
+      "content": "两列行波瞬时电压线性叠加，和差化积得到绿色合成驻波 u = u_i + u_r = 2A cos(beta*x) cos(omega*t)",
+      "badge": "电压线性叠加",
+      "color": "#83C167"
+    },
+    {
+      "id": "shot4",
+      "time_range": [18.0, 24.0],
+      "grammar": "t1_3b1b",
+      "camera": "still",
+      "content": "驻波持续振动，高亮电压波节恒为0、开路终端与波腹周期振荡的物理特性与振幅包络，说明无净能量传输",
+      "badge": "节点静止波腹",
+      "color": "#FFFF00"
+    },
+    {
+      "id": "shot5",
+      "time_range": [24.0, 30.0],
+      "grammar": "y3_whiteboard",
+      "camera": "pull",
+      "content": "分时层次手绘笔迹呈现合成公式、时空变量分离特性、无净能量传输与开路终端电磁物理本质",
+      "badge": "驻波合成公式",
+      "color": "#EF7226"
+    }
+  ]
+}

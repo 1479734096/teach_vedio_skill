@@ -1,0 +1,48 @@
+{
+  "title": "卷积的物理与几何本质：翻转、平移与积分",
+  "parameters": {
+    "pulse_width": 2.0,
+    "pulse_height": 1.0,
+    "t_min": -4.0,
+    "t_max": 4.0
+  },
+  "derived": {
+    "total_area": "pulse_width * pulse_height"
+  },
+  "project_name": "manim_test3_convolution",
+  "topic": "convolution",
+  "display_mapping": {
+    "output_baseline": -1.8,
+    "output_height_per_unit": 0.6
+  },
+  "drawing_bindings": {
+    "Scene2_FlipSlide": {
+      "f": {
+        "model": "conv_f",
+        "baseline": 1.3,
+        "y_scale": 1.2
+      },
+      "g": {
+        "model": "conv_g",
+        "baseline": 1.3,
+        "y_scale": 1.2
+      },
+      "triangle": {
+        "model": "conv_output",
+        "baseline": -1.8,
+        "y_scale": 0.6
+      },
+      "output": {
+        "model": "conv_output",
+        "baseline": -1.8,
+        "y_scale": 0.6
+      }
+    }
+  },
+  "units": {
+    "video_time": "s",
+    "simulation_time": "s",
+    "plot_scale": "见 drawing_bindings 独立单位换算",
+    "model_parameters": "参数名所列 SI 单位，或原示例明确采用的模型/绘图单位"
+  }
+}

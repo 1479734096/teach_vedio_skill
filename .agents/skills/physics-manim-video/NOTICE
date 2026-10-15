@@ -1,0 +1,7 @@
+# 第三方与许可说明
+
+本候选包原创场景、工作流及共享 QA 代码采用与 D 一致的 MIT 许可，见 LICENSE。此说明不改变第三方代码和资源的原许可。
+
+运行使用用户既有的 Manim Community Edition、NumPy、SymPy、OpenCV、Pillow、FFmpeg 和 LaTeX 环境；依赖程序没有随本包复制。Microsoft YaHei 是本机字体引用，没有复制 Windows 字体文件。项目侧采集不修改 Manim 安装。
+
+3b1b 描述视觉风格，不表示本包包含 3Blue1Brown 的成片或授权其商标。共享 QA 实现沿用 physics-canvas-video 的项目代码，保留相应贡献者声明。

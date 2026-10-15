@@ -1,0 +1,1 @@
+SCENES.shot5={draw(c,lt,gt){const levels=PHYSICS_CONFIG.parameters.modulation_levels;AM.draw(c,lt,gt,'shot5',levels[Math.min(3,Math.floor(lt/4.5))]);}};

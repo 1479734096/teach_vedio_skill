@@ -1,0 +1,151 @@
+{
+  "system": "transmission_line_voltage_standing_wave",
+  "topic": "standing_wave",
+  "domain_note": "本动画纵向波形为无耗传输线沿线电压分布图示，非材料机械横向振动；沿线点为空间电位采样点。",
+  "parameters": {
+    "amplitude_A_px": 75,
+    "standing_amplitude_2A_px": 150,
+    "wavelength_lambda_px": 500,
+    "frequency_f_hz": 0.5,
+    "period_T_s": 2.0,
+    "omega_rad_s": 3.141592653589793,
+    "beta_rad_px": 0.012566370614359173,
+    "phase_velocity_px_s": 250,
+    "reflection_coefficient_gamma": 1.0,
+    "terminal_type": "open_circuit_terminal (开路终端)"
+  },
+  "coordinates": {
+    "screen_origin_X0": 1500,
+    "screen_baseline_Y0": 550,
+    "x_min_px": -1050,
+    "x_max_px": 40
+  },
+  "equations": {
+    "incident_voltage_wave": "u_i(x, t) = A * cos(omega * t - beta * x)",
+    "reflected_voltage_wave": "u_r(x, t) = A * cos(omega * t + beta * x)",
+    "standing_voltage_wave": "u(x, t) = 2 * A * cos(beta * x) * cos(omega * t)",
+    "boundary_condition": "x = 0 处开路终端全反射 (Gamma = +1), u_i(0, t) = u_r(0, t) => Delta_phi = 0 (同相强化波腹)"
+  },
+  "nodes": [
+    {
+      "name": "N1",
+      "x_ratio": -0.25,
+      "x_px": -125,
+      "x_screen": 1375,
+      "nature": "电压波节: 电压恒为0 (完全相消, 对应电流波腹/磁场储能峰值点)"
+    },
+    {
+      "name": "N2",
+      "x_ratio": -0.75,
+      "x_px": -375,
+      "x_screen": 1125,
+      "nature": "电压波节: 电压恒为0 (完全相消, 对应电流波腹/磁场储能峰值点)"
+    },
+    {
+      "name": "N3",
+      "x_ratio": -1.25,
+      "x_px": -625,
+      "x_screen": 875,
+      "nature": "电压波节: 电压恒为0 (完全相消, 对应电流波腹/磁场储能峰值点)"
+    },
+    {
+      "name": "N4",
+      "x_ratio": -1.75,
+      "x_px": -875,
+      "x_screen": 625,
+      "nature": "电压波节: 电压恒为0 (完全相消, 对应电流波腹/磁场储能峰值点)"
+    }
+  ],
+  "antinodes": [
+    {
+      "name": "A0",
+      "x_ratio": 0.0,
+      "x_px": 0,
+      "x_screen": 1500,
+      "nature": "开路终端波腹: 电压振幅加倍达 2A, 电流恒为0 (纯电场储能峰值点)"
+    },
+    {
+      "name": "A1",
+      "x_ratio": -0.5,
+      "x_px": -250,
+      "x_screen": 1250,
+      "nature": "电压波腹: 周期振荡峰值 2A, 电流恒为0"
+    },
+    {
+      "name": "A2",
+      "x_ratio": -1.0,
+      "x_px": -500,
+      "x_screen": 1000,
+      "nature": "电压波腹: 周期振荡峰值 2A, 电流恒为0"
+    },
+    {
+      "name": "A3",
+      "x_ratio": -1.5,
+      "x_px": -750,
+      "x_screen": 750,
+      "nature": "电压波腹: 周期振荡峰值 2A, 电流恒为0"
+    },
+    {
+      "name": "A4",
+      "x_ratio": -2.0,
+      "x_px": -1000,
+      "x_screen": 500,
+      "nature": "电压波腹: 周期振荡峰值 2A, 电流恒为0"
+    }
+  ],
+  "drawing_bindings": {
+    "wave.incident": true,
+    "wave.reflected": true,
+    "wave.standing": true,
+    "wave.upper": true,
+    "wave.lower": true,
+    "wave.incident.dot": true,
+    "wave.reflected.dot": true,
+    "wave.standing.dot": true,
+    "wave.node": true
+  },
+  "continuity_rules": [
+    {
+      "source": "shot1",
+      "target": "shot2",
+      "role": "wave.incident",
+      "world_origin_delta": [
+        0,
+        0
+      ],
+      "axes": [
+        0
+      ]
+    },
+    {
+      "source": "shot2",
+      "target": "shot3",
+      "role": "wave.incident",
+      "world_origin_delta": [
+        0,
+        0
+      ],
+      "axes": [
+        0
+      ]
+    },
+    {
+      "source": "shot3",
+      "target": "shot4",
+      "role": "wave.standing",
+      "world_origin_delta": [
+        0,
+        0
+      ],
+      "axes": [
+        0
+      ]
+    }
+  ],
+  "units": {
+    "video_time": "s",
+    "simulation_time": "s",
+    "plot_scale": "见 drawing_bindings 独立单位换算",
+    "model_parameters": "参数名所列 SI 单位，或原示例明确采用的模型/绘图单位"
+  }
+}

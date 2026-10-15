@@ -1,0 +1,120 @@
+{
+  "system": "continuous_time_convolution",
+  "topic": "convolution",
+  "domain_note": "连续时间信号卷积积分机制：(f * g)(t) = ∫ f(τ) g(t - τ) dτ，通过哑变量 τ 坐标系下的镜像翻转、时延平移、重叠相乘与面积积分累积展示。",
+  "parameters": {
+    "pulse_width_px": 200,
+    "pulse_height_px": 120,
+    "slide_speed_px_s": 100,
+    "area_f": 1.0,
+    "area_g": 1.0,
+    "tau_min_px": -750,
+    "tau_max_px": 750
+  },
+  "coordinates": {
+    "screen_origin_X0": 960,
+    "screen_baseline_Y0": 550,
+    "x_min_px": -750,
+    "x_max_px": 750
+  },
+  "equations": {
+    "definition": "(f * g)(t) = \\int_{-\\infty}^{\\infty} f(\\tau) g(t - \\tau) d\\tau",
+    "step1_mirror": "g(\\tau) \\to g(-\\tau) (关于 \\tau=0 垂直镜像翻转)",
+    "step2_shift": "g(-\\tau) \\to g(t - \\tau) (沿 \\tau 轴向右平移 t)",
+    "step3_multiply": "w(\\tau; t) = f(\\tau) \\cdot g(t - \\tau) (重叠相乘取交集)",
+    "step4_integrate": "y(t) = \\int w(\\tau; t) d\\tau (重叠区域面积随时间累积)"
+  },
+  "checkpoints": [
+    {
+      "t_state": "未进入",
+      "overlap_area": 0.0,
+      "nature": "两信号无重叠，卷积输出为 0"
+    },
+    {
+      "t_state": "进入上升",
+      "overlap_area_linear": true,
+      "nature": "重叠面积随时间线性增加"
+    },
+    {
+      "t_state": "完全重合峰值",
+      "overlap_area_max": true,
+      "nature": "两门信号完全重合，输出达到三角形峰值"
+    },
+    {
+      "t_state": "滑出下降",
+      "overlap_area_linear": true,
+      "nature": "重叠面积随时间线性衰减"
+    },
+    {
+      "t_state": "完全脱离",
+      "overlap_area": 0.0,
+      "nature": "滑出有效区间，卷积输出归零"
+    }
+  ],
+  "qa_expectations": {
+    "sliding_intervals": [
+      {
+        "start": 12,
+        "end": 13,
+        "speed": 100
+      },
+      {
+        "start": 13,
+        "end": 18,
+        "speed": 0
+      },
+      {
+        "start": 18,
+        "end": 23,
+        "speed": 100
+      },
+      {
+        "start": 23,
+        "end": 24,
+        "speed": 0
+      }
+    ]
+  },
+  "drawing_bindings": {
+    "conv.f": true,
+    "conv.g": true,
+    "conv.curve": true,
+    "conv.dot": true,
+    "conv.flip": true
+  },
+  "continuity_rules": [
+    {
+      "source": "shot1",
+      "target": "shot2",
+      "role": "conv.f",
+      "world_origin_delta": [
+        0,
+        0
+      ]
+    },
+    {
+      "source": "shot2",
+      "target": "shot3",
+      "role": "conv.f",
+      "world_origin_delta": [
+        0,
+        0
+      ]
+    },
+    {
+      "source": "shot3",
+      "target": "shot4",
+      "role": "conv.f",
+      "world_origin_delta": [
+        0,
+        0
+      ]
+    }
+  ],
+  "units": {
+    "video_time": "s",
+    "simulation_time": "s",
+    "plot_scale": "见 drawing_bindings 独立单位换算",
+    "model_parameters": "参数名所列 SI 单位，或原示例明确采用的模型/绘图单位"
+  }
+}

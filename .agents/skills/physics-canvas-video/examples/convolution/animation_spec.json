@@ -1,0 +1,151 @@
+{
+  "title": "卷积的翻转与平移——连续时间卷积积分机制",
+  "project": "physics-canvas-video",
+  "resolution": {
+    "width": 1920,
+    "height": 1080
+  },
+  "fps": 30,
+  "duration": 30.0,
+  "theme": "dark_board",
+  "physics": {
+    "system": "continuous_time_convolution",
+    "topic": "convolution",
+    "domain_note": "连续时间信号卷积积分机制：(f * g)(t) = ∫ f(τ) g(t - τ) dτ，通过哑变量 τ 坐标系下的镜像翻转、时延平移、重叠相乘与面积积分累积展示。",
+    "parameters": {
+      "pulse_width_px": 200,
+      "pulse_height_px": 120,
+      "slide_speed_px_s": 100,
+      "area_f": 1.0,
+      "area_g": 1.0,
+      "tau_min_px": -750,
+      "tau_max_px": 750
+    },
+    "coordinates": {
+      "screen_origin_X0": 960,
+      "screen_baseline_Y0": 550,
+      "x_min_px": -750,
+      "x_max_px": 750
+    },
+    "equations": {
+      "definition": "(f * g)(t) = \\int_{-\\infty}^{\\infty} f(\\tau) g(t - \\tau) d\\tau",
+      "step1_mirror": "g(\\tau) \\to g(-\\tau) (关于 \\tau=0 垂直镜像翻转)",
+      "step2_shift": "g(-\\tau) \\to g(t - \\tau) (沿 \\tau 轴向右平移 t)",
+      "step3_multiply": "w(\\tau; t) = f(\\tau) \\cdot g(t - \\tau) (重叠相乘取交集)",
+      "step4_integrate": "y(t) = \\int w(\\tau; t) d\\tau (重叠区域面积随时间累积)"
+    },
+    "checkpoints": [
+      {
+        "t_state": "未进入",
+        "overlap_area": 0.0,
+        "nature": "两信号无重叠，卷积输出为 0"
+      },
+      {
+        "t_state": "进入上升",
+        "overlap_area_linear": true,
+        "nature": "重叠面积随时间线性增加"
+      },
+      {
+        "t_state": "完全重合峰值",
+        "overlap_area_max": true,
+        "nature": "两门信号完全重合，输出达到三角形峰值"
+      },
+      {
+        "t_state": "滑出下降",
+        "overlap_area_linear": true,
+        "nature": "重叠面积随时间线性衰减"
+      },
+      {
+        "t_state": "完全脱离",
+        "overlap_area": 0.0,
+        "nature": "滑出有效区间，卷积输出归零"
+      }
+    ],
+    "qa_expectations": {
+      "sliding_intervals": [
+        {
+          "start": 12,
+          "end": 13,
+          "speed": 100
+        },
+        {
+          "start": 13,
+          "end": 18,
+          "speed": 0
+        },
+        {
+          "start": 18,
+          "end": 23,
+          "speed": 100
+        },
+        {
+          "start": 23,
+          "end": 24,
+          "speed": 0
+        }
+      ]
+    }
+  },
+  "shots": [
+    {
+      "id": "shot1",
+      "time_range": [
+        0.0,
+        6.0
+      ],
+      "grammar": "t1_3b1b",
+      "camera": "still",
+      "content": "建立哑变量 tau 坐标系，展示固定信号 f(tau) 与待卷积信号 g(tau) 的原始波形与区间",
+      "badge": "原始信号与哑变量",
+      "color": "#58C4DD"
+    },
+    {
+      "id": "shot2",
+      "time_range": [
+        6.0,
+        12.0
+      ],
+      "grammar": "t1_3b1b",
+      "camera": "push",
+      "content": "展示第一步：镜像翻转 g(tau) -> g(-tau)，清晰展现以 tau=0 纵轴为镜像轴的对称翻转动效",
+      "badge": "时间反转镜像",
+      "color": "#FC6255"
+    },
+    {
+      "id": "shot3",
+      "time_range": [
+        12.0,
+        18.0
+      ],
+      "grammar": "t1_3b1b",
+      "camera": "glide",
+      "content": "展示第二步：时间平移 g(-tau) -> g(t-tau)，动态平移滑动窗口沿 tau 轴自左向右推进",
+      "badge": "滑动窗口推进",
+      "color": "#2ED573"
+    },
+    {
+      "id": "shot4",
+      "time_range": [
+        18.0,
+        24.0
+      ],
+      "grammar": "t1_3b1b",
+      "camera": "still",
+      "content": "展示第三与第四步：重叠相乘与积分累积，高亮黄色重叠交集区域，同步生成下方三角形卷积输出 y(t)",
+      "badge": "相乘与面积累积",
+      "color": "#FFFF00"
+    },
+    {
+      "id": "shot5",
+      "time_range": [
+        24.0,
+        30.0
+      ],
+      "grammar": "y3_whiteboard",
+      "camera": "pull",
+      "content": "白板手绘总结卷积数学定义式、傅里叶变换时域卷积频域相乘定理与 LTI 线性系统冲击响应物理本质",
+      "badge": "卷积本质总结",
+      "color": "#FF9F43"
+    }
+  ]
+}

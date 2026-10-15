@@ -1,0 +1,206 @@
+{
+  "topic": "am",
+  "title": "调幅 AM",
+  "parameters": {
+    "carrier_amplitude_v": 1,
+    "carrier_frequency_hz": 1000,
+    "message_frequency_hz": 100,
+    "video_second_to_sim_second": 0.001,
+    "modulation_levels": [
+      0,
+      0.6,
+      1,
+      1.2
+    ]
+  },
+  "time_mapping": "每视频秒对应1ms仿真时间",
+  "spectrum_convention": "单边余弦幅度谱；载波Ac，两边带各mAc/2",
+  "parameter_changes_are_demonstrations": true,
+  "drawing_bindings": {
+    "AMTeach": {
+      "carrier": {
+        "x_origin": -5,
+        "time_per_x": 0.001,
+        "baseline": -0.6,
+        "y_scale": 0.55
+      },
+      "signal": {
+        "x_origin": -5,
+        "time_per_x": 0.001,
+        "baseline": -0.6,
+        "y_scale": 0.55
+      },
+      "upper": {
+        "x_origin": -5,
+        "time_per_x": 0.001,
+        "baseline": -0.6,
+        "y_scale": 0.55
+      },
+      "lower": {
+        "x_origin": -5,
+        "time_per_x": 0.001,
+        "baseline": -0.6,
+        "y_scale": 0.55
+      },
+      "spectrum": {
+        "frequency_origin_hz": 800,
+        "x_origin": -4,
+        "x_scale": 0.02,
+        "baseline": -1.5,
+        "y_scale": 1.5
+      }
+    }
+  },
+  "modulation_schedule": [
+    {
+      "start": 0,
+      "end": 36,
+      "from": 0,
+      "to": 0
+    },
+    {
+      "start": 36,
+      "end": 38,
+      "from": 0,
+      "to": 0.6
+    },
+    {
+      "start": 38,
+      "end": 46,
+      "from": 0.6,
+      "to": 0.6
+    },
+    {
+      "start": 46,
+      "end": 48,
+      "from": 0.6,
+      "to": 1
+    },
+    {
+      "start": 48,
+      "end": 56,
+      "from": 1,
+      "to": 1
+    },
+    {
+      "start": 56,
+      "end": 58,
+      "from": 1,
+      "to": 1.2
+    },
+    {
+      "start": 58,
+      "end": 77,
+      "from": 1.2,
+      "to": 1.2
+    },
+    {
+      "start": 77,
+      "end": 78,
+      "from": 1.2,
+      "to": 0
+    },
+    {
+      "start": 78,
+      "end": 79,
+      "from": 0,
+      "to": 0
+    },
+    {
+      "start": 79,
+      "end": 80,
+      "from": 0,
+      "to": 0.6
+    },
+    {
+      "start": 80,
+      "end": 81,
+      "from": 0.6,
+      "to": 0.6
+    },
+    {
+      "start": 81,
+      "end": 82,
+      "from": 0.6,
+      "to": 1
+    },
+    {
+      "start": 82,
+      "end": 83,
+      "from": 1,
+      "to": 1
+    },
+    {
+      "start": 83,
+      "end": 84,
+      "from": 1,
+      "to": 1.2
+    },
+    {
+      "start": 84,
+      "end": 90,
+      "from": 1.2,
+      "to": 1.2
+    }
+  ],
+  "presentation": {
+    "revision": "am-font-a-plus2-20261015",
+    "scope": "仅两套AM；七套已验收主题不改",
+    "baseline_a_pt": {
+      "title": 34,
+      "body": 18,
+      "legend": 16,
+      "indicator": 20,
+      "section": 24,
+      "summary": 22,
+      "formula_main": 28,
+      "formula_secondary": 24,
+      "formula_step": 26,
+      "formula_expanded": 23,
+      "formula_summary_main": 30,
+      "formula_summary_secondary": 28
+    },
+    "font_pt": {
+      "title": 36,
+      "body": 20,
+      "legend": 18,
+      "indicator": 22,
+      "section": 26,
+      "summary": 24,
+      "formula_main": 30,
+      "formula_secondary": 26,
+      "formula_step": 28,
+      "formula_expanded": 25,
+      "formula_summary_main": 32,
+      "formula_summary_secondary": 30
+    },
+    "canvas_font_px": {
+      "text": {
+        "18": 34.8324,
+        "20": 38.7181,
+        "22": 42.5761,
+        "24": 46.434,
+        "25": 48.3769,
+        "26": 50.3197,
+        "28": 54.1776,
+        "30": 58.0633,
+        "32": 61.949,
+        "36": 69.6649
+      },
+      "math": {
+        "18": 25.3861,
+        "20": 28.2067,
+        "22": 31.0274,
+        "24": 33.8481,
+        "25": 35.2584,
+        "26": 36.6687,
+        "28": 39.4894,
+        "30": 42.3101,
+        "32": 45.1308,
+        "36": 50.7721
+      }
+    },
+    "min_plot_text_gap_px": 24,
+    "calibration_reference": "1920x1080；A Microsoft YaHei/MathTex真实边界，D NotoSansSC/CMU实际measureText，分别校准中文和数学x字高"
+  }
+}

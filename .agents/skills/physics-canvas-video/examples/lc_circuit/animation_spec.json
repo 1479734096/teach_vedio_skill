@@ -1,0 +1,75 @@
+{
+  "title": "LC 振荡电路中的能量交换与电磁振荡机制",
+  "project": "physics-canvas-video",
+  "resolution": { "width": 1920, "height": 1080 },
+  "fps": 30,
+  "duration": 30.0,
+  "theme": "dark_board",
+  "physics": {
+    "system": "lc_oscillation_circuit",
+    "topic": "lc_circuit",
+    "parameters": {
+      "inductance_L_h": 1.0,
+      "capacitance_C_f": 1.0,
+      "initial_charge_Q0_c": 1.0,
+      "charge_amplitude_px": 120,
+      "current_amplitude_px": 120,
+      "period_T_s": 6.283185307179586,
+      "omega_rad_s": 1.0,
+      "total_energy_E0_j": 0.5
+    },
+    "coordinates": {
+      "screen_origin_X0": 960,
+      "screen_baseline_Y0": 550,
+      "x_min_px": -750,
+      "x_max_px": 750
+    }
+  },
+  "shots": [
+    {
+      "id": "shot1",
+      "time_range": [0.0, 6.0],
+      "grammar": "t1_3b1b",
+      "camera": "still",
+      "content": "呈现 LC 闭合回路，初始态电容充饱电荷 Q=Q0，电场能量达到峰值 Ee=100%，回路电流 I=0",
+      "badge": "初始电场储能",
+      "color": "#58C4DD"
+    },
+    {
+      "id": "shot2",
+      "time_range": [6.0, 12.0],
+      "grammar": "t1_3b1b",
+      "camera": "push",
+      "content": "电容放电驱动电荷流动，电场减弱，电感线圈产生自感磁场，电流达到峰值，磁场能量 Em 达到 100%",
+      "badge": "电场转为磁场",
+      "color": "#FC6255"
+    },
+    {
+      "id": "shot3",
+      "time_range": [12.0, 18.0],
+      "grammar": "t1_3b1b",
+      "camera": "glide",
+      "content": "自感电动势阻碍电流减小，磁场崩溃继续推动电荷，使电容器反向充电至 -Q0，完成半周期转换",
+      "badge": "反向反充转换",
+      "color": "#2ED573"
+    },
+    {
+      "id": "shot4",
+      "time_range": [18.0, 24.0],
+      "grammar": "t1_3b1b",
+      "camera": "still",
+      "content": "动态能量柱状图与 Q(t)、I(t) 连续谐振曲线：正交 90 度相位差，总能量 Ee+Em 恒定等于 100%",
+      "badge": "电磁能量守恒",
+      "color": "#FFFF00"
+    },
+    {
+      "id": "shot5",
+      "time_range": [24.0, 30.0],
+      "grammar": "y3_whiteboard",
+      "camera": "pull",
+      "content": "白板手绘总结二阶齐次微分方程、固有频率公式 omega0=1/sqrt(LC) 与电磁能量守恒定律",
+      "badge": "振荡微分方程",
+      "color": "#FF9F43"
+    }
+  ]
+}

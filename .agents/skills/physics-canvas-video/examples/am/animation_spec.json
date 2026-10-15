@@ -1,0 +1,348 @@
+{
+  "physics": {
+    "topic": "am",
+    "title": "调幅 AM",
+    "parameters": {
+      "carrier_amplitude_v": 1,
+      "carrier_frequency_hz": 1000,
+      "message_frequency_hz": 100,
+      "video_second_to_sim_second": 0.001,
+      "modulation_levels": [
+        0,
+        0.6,
+        1,
+        1.2
+      ]
+    },
+    "time_mapping": "每视频秒对应1ms仿真时间",
+    "spectrum_convention": "单边余弦幅度谱；载波Ac，两边带各mAc/2",
+    "parameter_changes_are_demonstrations": true,
+    "drawing_bindings": {
+      "shot1": {
+        "signal": {
+          "x_origin": 150,
+          "time_per_x": 6.17283950617284e-06,
+          "baseline": 665,
+          "y_scale": 75
+        },
+        "upper": {
+          "x_origin": 150,
+          "time_per_x": 6.17283950617284e-06,
+          "baseline": 665,
+          "y_scale": 75
+        },
+        "lower": {
+          "x_origin": 150,
+          "time_per_x": 6.17283950617284e-06,
+          "baseline": 665,
+          "y_scale": 75
+        },
+        "anchor": {
+          "start": [
+            150,
+            665
+          ],
+          "end": [
+            1770,
+            665
+          ]
+        },
+        "carrier": {
+          "x_origin": 150,
+          "time_per_x": 1.4084507042253522e-05,
+          "baseline": 464,
+          "y_scale": 40,
+          "x_end": 860
+        },
+        "message": {
+          "x_origin": 1060,
+          "time_per_x": 1.4084507042253522e-05,
+          "baseline": 464,
+          "y_scale": 40,
+          "x_end": 1770
+        }
+      },
+      "shot2": {
+        "signal": {
+          "x_origin": 150,
+          "time_per_x": 6.17283950617284e-06,
+          "baseline": 665,
+          "y_scale": 75
+        },
+        "upper": {
+          "x_origin": 150,
+          "time_per_x": 6.17283950617284e-06,
+          "baseline": 665,
+          "y_scale": 75
+        },
+        "lower": {
+          "x_origin": 150,
+          "time_per_x": 6.17283950617284e-06,
+          "baseline": 665,
+          "y_scale": 75
+        },
+        "anchor": {
+          "start": [
+            150,
+            665
+          ],
+          "end": [
+            1770,
+            665
+          ]
+        }
+      },
+      "shot3": {
+        "signal": {
+          "x_origin": 150,
+          "time_per_x": 6.17283950617284e-06,
+          "baseline": 665,
+          "y_scale": 75
+        },
+        "upper": {
+          "x_origin": 150,
+          "time_per_x": 6.17283950617284e-06,
+          "baseline": 665,
+          "y_scale": 75
+        },
+        "lower": {
+          "x_origin": 150,
+          "time_per_x": 6.17283950617284e-06,
+          "baseline": 665,
+          "y_scale": 75
+        },
+        "anchor": {
+          "start": [
+            150,
+            665
+          ],
+          "end": [
+            1770,
+            665
+          ]
+        }
+      },
+      "shot4": {
+        "signal": {
+          "x_origin": 150,
+          "time_per_x": 6.17283950617284e-06,
+          "baseline": 665,
+          "y_scale": 75
+        },
+        "upper": {
+          "x_origin": 150,
+          "time_per_x": 6.17283950617284e-06,
+          "baseline": 665,
+          "y_scale": 75
+        },
+        "lower": {
+          "x_origin": 150,
+          "time_per_x": 6.17283950617284e-06,
+          "baseline": 665,
+          "y_scale": 75
+        },
+        "anchor": {
+          "start": [
+            150,
+            665
+          ],
+          "end": [
+            1770,
+            665
+          ]
+        },
+        "factor": {
+          "x_origin": 1080,
+          "time_per_x": 1.4492753623188407e-05,
+          "baseline": 397,
+          "y_scale": 20,
+          "x_end": 1770
+        }
+      },
+      "shot5": {
+        "spectrum": {
+          "frequency_origin_hz": 800,
+          "x_origin": 1000,
+          "x_scale": 2,
+          "baseline": 620,
+          "y_scale": 180
+        }
+      }
+    },
+    "modulation_schedule": {
+      "shot1": 0,
+      "shot2": 0.6,
+      "shot3": 1,
+      "shot4": 1.2,
+      "shot5": {
+        "start": 72,
+        "step_s": 4.5
+      }
+    },
+    "continuity_rules": [
+      {
+        "role": "anchor",
+        "source": "shot1",
+        "target": "shot2",
+        "point_index": 0,
+        "world_origin_delta": [
+          0,
+          0
+        ]
+      },
+      {
+        "role": "anchor",
+        "source": "shot2",
+        "target": "shot3",
+        "point_index": 0,
+        "world_origin_delta": [
+          0,
+          0
+        ]
+      },
+      {
+        "role": "anchor",
+        "source": "shot3",
+        "target": "shot4",
+        "point_index": 0,
+        "world_origin_delta": [
+          0,
+          0
+        ]
+      }
+    ],
+    "plot_label_rules": {
+      "shot1": {
+        "prefixes": [
+          "黄：",
+          "青：",
+          "蓝：",
+          "绿：",
+          "有符号幅度因子",
+          "载波（",
+          "归一化调制"
+        ],
+        "roles": [
+          "signal",
+          "upper",
+          "lower",
+          "carrier",
+          "message"
+        ]
+      },
+      "shot2": {
+        "prefixes": [
+          "黄：",
+          "青：",
+          "蓝：",
+          "绿：",
+          "有符号幅度因子"
+        ],
+        "roles": [
+          "signal",
+          "upper",
+          "lower"
+        ]
+      },
+      "shot3": {
+        "prefixes": [
+          "黄：",
+          "青：",
+          "蓝：",
+          "绿：",
+          "有符号幅度因子"
+        ],
+        "roles": [
+          "signal",
+          "upper",
+          "lower"
+        ]
+      },
+      "shot4": {
+        "prefixes": [
+          "黄：",
+          "青：",
+          "蓝：",
+          "绿：",
+          "有符号幅度因子",
+          "幅度因子（"
+        ],
+        "roles": [
+          "signal",
+          "upper",
+          "lower",
+          "factor"
+        ]
+      }
+    },
+    "presentation": {
+      "revision": "am-font-a-plus2-20261015",
+      "scope": "仅两套AM；七套已验收主题不改",
+      "baseline_a_pt": {
+        "title": 34,
+        "body": 18,
+        "legend": 16,
+        "indicator": 20,
+        "section": 24,
+        "summary": 22,
+        "formula_main": 28,
+        "formula_secondary": 24,
+        "formula_step": 26,
+        "formula_expanded": 23,
+        "formula_summary_main": 30,
+        "formula_summary_secondary": 28
+      },
+      "font_pt": {
+        "title": 36,
+        "body": 20,
+        "legend": 18,
+        "indicator": 22,
+        "section": 26,
+        "summary": 24,
+        "formula_main": 30,
+        "formula_secondary": 26,
+        "formula_step": 28,
+        "formula_expanded": 25,
+        "formula_summary_main": 32,
+        "formula_summary_secondary": 30
+      },
+      "canvas_font_px": {
+        "text": {
+          "18": 34.8324,
+          "20": 38.7181,
+          "22": 42.5761,
+          "24": 46.434,
+          "25": 48.3769,
+          "26": 50.3197,
+          "28": 54.1776,
+          "30": 58.0633,
+          "32": 61.949,
+          "36": 69.6649
+        },
+        "math": {
+          "18": 25.3861,
+          "20": 28.2067,
+          "22": 31.0274,
+          "24": 33.8481,
+          "25": 35.2584,
+          "26": 36.6687,
+          "28": 39.4894,
+          "30": 42.3101,
+          "32": 45.1308,
+          "36": 50.7721
+        }
+      },
+      "min_plot_text_gap_px": 24,
+      "calibration_reference": "1920x1080；A Microsoft YaHei/MathTex真实边界，D NotoSansSC/CMU实际measureText，分别校准中文和数学x字高"
+    }
+  },
+  "duration_s": 90,
+  "silent": true,
+  "target": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "codec": "h264",
+    "pixel_format": "yuv420p"
+  }
+}

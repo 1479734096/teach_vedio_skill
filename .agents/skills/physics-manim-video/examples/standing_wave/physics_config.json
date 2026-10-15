@@ -1,0 +1,83 @@
+{
+  "title": "传输线驻波形成机制 (Regression Test)",
+  "parameters": {
+    "wavelength": 6.0,
+    "period": 2.0,
+    "amplitude": 1.0,
+    "reflection_coeff": 1.0,
+    "x_term": 4.2,
+    "x_source": -5.8
+  },
+  "derived": {
+    "beta": "2 * pi / wavelength",
+    "omega": "2 * pi / period"
+  },
+  "project_name": "manim_test1_standing_wave",
+  "topic": "standing_wave",
+  "drawing_bindings": {
+    "Scene1_Hook": {
+      "incident": {
+        "model": "incident",
+        "baseline": -0.15,
+        "y_scale": 0.75
+      },
+      "reflected": {
+        "model": "reflected",
+        "baseline": -0.15,
+        "y_scale": 0.75
+      }
+    },
+    "Scene2_Derivation": {
+      "standing_mini": {
+        "model": "standing",
+        "baseline": -2.85,
+        "y_scale": 0.22
+      }
+    },
+    "Scene3_Nodes": {
+      "standing": {
+        "model": "standing",
+        "baseline": -0.55,
+        "y_scale": 0.58
+      },
+      "upper": {
+        "model": "envelope_upper",
+        "baseline": -0.55,
+        "y_scale": 0.58
+      },
+      "lower": {
+        "model": "envelope_lower",
+        "baseline": -0.55,
+        "y_scale": 0.58
+      },
+      "node_marker": {
+        "model": "node_marker",
+        "baseline": -0.55
+      },
+      "antinode_marker": {
+        "model": "antinode_marker",
+        "baseline": -0.55
+      }
+    }
+  },
+  "plot_exclusion_regions": {
+    "Scene3_Nodes": {
+      "plot_box": [
+        -5.8,
+        -1.95,
+        4.2,
+        0.85
+      ],
+      "text_prefixes": [
+        "开路端 x=0:",
+        "距终端 λ/4:"
+      ]
+    }
+  },
+  "units": {
+    "video_time": "s",
+    "simulation_time": "s",
+    "plot_scale": "见 drawing_bindings 独立单位换算",
+    "model_parameters": "参数名所列 SI 单位，或原示例明确采用的模型/绘图单位"
+  }
+}
